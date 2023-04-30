@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practyl Panel | Lista de servidores</title>
+</head>
+
+<body style="background-color: rgb(26, 26, 26);">
+
+    <%- include("../parts/header.ejs") %>
+
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                    style="border-radius: 10px; height: 85vh; margin-left: 15px; width: 30vh;">
+                    <%- include("../parts/sidebar.ejs") %>
+                </div>
+                <div class="col py-3">
+                    <div style="margin-top: -16px;padding: 5px; border-radius: 10px; background-color: rgb(33,37,41); height: 85vh;">
+                        <% servers.forEach(server => { %>
+                            <div style="margin: 5px; background-color:rgb(51, 51, 51); padding: 5px; border-radius: 10px; display: flex; width: 163vh;">
+                                <div style="display: flex; width: 158vh;">
+                                        <span style="width: 39.5; margin-left: calc(100% - 95%)">
+                                            <svg width="25" height="25" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                                <path d="M9 9l1 0"></path>
+                                                <path d="M9 13l6 0"></path>
+                                                <path d="M9 17l6 0"></path>
+                                             </svg>
+                                            <%= server.attributes.name %>
+                                        </span>
+                                        <span style="width: 39.5; margin-left: calc(100% - 95%)">
+                                            <svg width="25" height="25" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M5 5m0 1a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z"></path>
+                                                <path d="M9 9h6v6h-6z"></path>
+                                                <path d="M3 10h2"></path>
+                                                <path d="M3 14h2"></path>
+                                                <path d="M10 3v2"></path>
+                                                <path d="M14 3v2"></path>
+                                                <path d="M21 10h-2"></path>
+                                                <path d="M21 14h-2"></path>
+                                                <path d="M14 21v-2"></path>
+                                                <path d="M10 21v-2"></path>
+                                             </svg>
+                                            CPU: <%= server.attributes.limits.cpu %>%
+                                        </span>
+                                        <span style="width: 39.5; margin-left: calc(100% - 95%)">
+                                            <svg width="25" height="25" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M3 12l3 3l3 -3l-3 -3z"></path>
+                                                <path d="M15 12l3 3l3 -3l-3 -3z"></path>
+                                                <path d="M9 6l3 3l3 -3l-3 -3z"></path>
+                                                <path d="M9 18l3 3l3 -3l-3 -3z"></path>
+                                             </svg>
+                                            RAM: <%= server.attributes.limits.memory %>MB
+                                        </span>
+                                        <span style="width: 39.5; margin-left: calc(100% - 95%)">
+                                            <svg width="25" height="25" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"></path>
+                                                <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                                <path d="M14 4l0 4l-6 0l0 -4"></path>
+                                             </svg>
+                                            DISCO: <%= server.attributes.limits.disk %>MB
+                                        </span>
+                                </div>
+                                <div style="display: flex">
+                                    <a href="/server/<%= server.attributes.identifier %>"><button style="border-width: 0px; border-radius: 20px; width: 80px; margin-left: 5px;">Gestionar</button></a>
+                                    <a href="/server/delete/<%= server.attributes.identifier %>"><button style="border-width: 0px; border-radius: 20px; width: 70px; margin-left: 5px;">Eliminar</button></a>
+                                    <a href="<%= req.session.user.panel %>/server/<%= server.attributes.identifier %>"><button style="border-width: 0px; border-radius: 20px; width: 100px; margin-left: 5px;">Pterodactyl</button></a>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+
+</body>
+
+</html>

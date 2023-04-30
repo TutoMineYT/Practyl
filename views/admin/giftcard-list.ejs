@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practyl Panel | Lista de tarjetas de regalo</title>
+</head>
+
+<body style="background-color: rgb(26, 26, 26);">
+
+    <%- include("../parts/header.ejs") %>
+
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                    style="border-radius: 10px; height: 85vh; margin-left: 15px; width: 30vh;">
+                    <%- include("../parts/sidebar.ejs") %>
+                </div>
+                <div class="col py-3">
+                    <div
+                        style="margin-top: -16px;padding: 5px; border-radius: 10px; background-color: rgb(33,37,41); height: 85vh;">
+                        <a href="/admin/giftcard/create"><button style="width: 97%; margin: 20px; border-radius: 20px; border: 0; background-color: blue;">Crear tarjeta de regalo</button></a>
+                        <% giftcards.forEach(giftcard => { %>
+                            <div style="margin: 5px; background-color:rgb(51, 51, 51); padding: 5px; border-radius: 10px; display: flex; width: 164vh;">
+                                <div style="display: flex; width: 158vh;">
+                                    <span style="width: 39.5; margin-left: 1%">
+                                        <svg width="25" height="25" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M12 3a3 3 0 0 0 -3 3v12a3 3 0 0 0 3 3"></path>
+                                            <path d="M6 3a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3"></path>
+                                            <path d="M13 7h7a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-7"></path>
+                                            <path d="M5 7h-1a1 1 0 0 0 -1 1v8a1 1 0 0 0 1 1h1"></path>
+                                            <path d="M17 12h.01"></path>
+                                            <path d="M13 12h.01"></path>
+                                         </svg>
+                                        <b>CODE:</b> <%= giftcard.code %>
+                                    </span>
+                                    <span style="width: 39.5; margin-left: calc(100% - 95%)">
+                                        <svg width="25" height="25" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z"></path>
+                                            <path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4"></path>
+                                            <path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"></path>
+                                            <path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
+                                            <path d="M3 11c0 .888 .772 1.45 2 2"></path>
+                                         </svg>
+                                        <b>COINS:</b> <%= giftcard.coins %>
+                                    </span>
+                                    <span style="width: 39.5; margin-left: calc(100% - 95%)">
+                                        <svg width="25" height="25" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M8 13v-7.5a1.5 1.5 0 0 1 3 0v6.5"></path>
+                                            <path d="M11 5.5v-2a1.5 1.5 0 1 1 3 0v8.5"></path>
+                                            <path d="M14 5.5a1.5 1.5 0 0 1 3 0v6.5"></path>
+                                            <path d="M17 7.5a1.5 1.5 0 0 1 3 0v8.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7a69.74 69.74 0 0 1 -.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47"></path>
+                                         </svg>
+                                        <b>USES:</b> <%= giftcard.uses %>
+                                    </span>
+                                    <% if(giftcard.maxUses) { %>
+                                        <span style="width: 39.5; margin-left: calc(100% - 95%)">
+                                            <svg width="25" height="25" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M8 13v-7.5a1.5 1.5 0 0 1 3 0v6.5"></path>
+                                                <path d="M11 5.5v-2a1.5 1.5 0 1 1 3 0v8.5"></path>
+                                                <path d="M14 5.5a1.5 1.5 0 0 1 3 0v6.5"></path>
+                                                <path d="M17 7.5a1.5 1.5 0 0 1 3 0v8.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7a69.74 69.74 0 0 1 -.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47"></path>
+                                             </svg>
+                                            <b>MAX USES:</b> <%= giftcard.maxUses %>
+                                        </span>
+                                    <% } %>
+                                </div>
+                                <div style="display: flex">
+                                    <a href="/admin/giftcard/delete/<%= giftcard.code %>"><button style="border-width: 0px; border-radius: 20px; width: 70px; margin-left: 5px;">Delete</button></a>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+
+</body>
+
+</html>

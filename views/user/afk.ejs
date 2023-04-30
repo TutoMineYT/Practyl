@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practyl Panel | AFK</title>
+</head>
+
+<body style="background-color: rgb(26, 26, 26);">
+
+    <%- include("../parts/header.ejs") %>
+
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                    style="border-radius: 10px; height: 85vh; margin-left: 15px; width: 30vh;">
+                    <%- include("../parts/sidebar.ejs") %>
+                </div>
+                <div class="col py-3">
+                    <div
+                        style="margin-top: -16px;padding: 5px; border-radius: 10px; background-color: rgb(33,37,41); height: 85vh;">
+                        <div style="display: flex; justify-content: center; align-items: center; padding-top: 5%;">
+                            <div style="background-color: rgb(65, 69, 69); border-radius: 10px; width: 400px; height: 500px;">
+                                <center>
+                                    <h1>AFK</h1>
+                                    <h5 style="margin-top: 20%">Cada <b>1 minuto</b> ganaras <b><%= config.arcio.coins %></b> coins.</h3>
+                                    <a href="/"><button style="border-width: 0; border-radius: 20px; background-color: green; color: #fff; margin-left: 5px; width: 95%; padding: 5px; display: flex; justify-content: center; align-items: center; margin-top:  30%;">
+                                        <svg width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M13 12v.01"></path>
+                                            <path d="M3 21h18"></path>
+                                            <path d="M5 21v-16a2 2 0 0 1 2 -2h7.5m2.5 10.5v7.5"></path>
+                                            <path d="M14 7h7m-3 -3l3 3l-3 3"></path>
+                                         </svg>
+                                        Salir
+                                    </button></a>
+                                    <div style="margin-top: 30%;">
+                                        <span id="ganando">No estas ganando</span>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</body>
+
+<script>
+    let secure = "wss://"
+    if("<%= config.discordLogin.protocol %>" === "http://") secure = "ws://"
+    const socket = new WebSocket(`${secure}<%= config.discordLogin.domain %>/afkWB`);
+        // Connection opened
+        socket.addEventListener("open", async (event) => {
+            document.getElementById("ganando").innerHTML = "Estas ganando."
+        });
+        socket.addEventListener("close", async (event) => {
+           if(event.code === 1000) return  document.getElementById("ganando").innerHTML = "No estas ganando.<br>RAZON: " + event.reason
+            location.reload()
+        });
+</script>
+
+</html>
