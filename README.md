@@ -9,6 +9,6 @@ Practyl es un panel de control para pterodactyl con el que podas crear servidore
 <h3>2º PASO</h3>
 > cd Practy
 <h3>3º PASO</h3>
-> npm i 
+`npm i` 
 <h3>4º PASO</h3>
 > node .
