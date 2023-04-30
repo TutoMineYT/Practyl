@@ -8,34 +8,74 @@ Practyl es un panel de control para pterodactyl con el que podas crear servidore
 
 <h1>Guia de instalacion.</h1>
 <h3>1º PASO</h3>
--> git clone https://github.com/TutoMineYT/Practyl
+```
+git clone https://github.com/TutoMineYT/Practyl
+```
 <h3>2º PASO</h3>
--> cd Practyl
+
+```
+cd Practyl
+```
+
 <h3>3º PASO</h3>
--> npm i
+
+```
+npm i
+```
+
 <h3>4º PASO</h3>
--> node .
+
+```
+node .
+```
 
 <h1>Guia de instalacion de NGINX (Linux systems)</h1>
 <h3>1º PASO</h3>
--> apt update && apt upgrade
+
+```
+apt update && apt upgrade
+```
+
 <h3>2º PASO</h3>
--> apt install nginx certbot python3-certbot-nginx
+
+```
+apt install nginx certbot python3-certbot-nginx
+```
+
 <h3>3º PASO</h3>
--> ln -s /etc/nginx/sites-available/practyl.conf /etc/nginx/sites-enabled/practyl.conf
+
+```
+ln -s /etc/nginx/sites-available/practyl.conf /etc/nginx/sites-enabled/practyl.conf
+```
+
 <h3>4º PASO</h3>
--> nano /etc/nginx/sites-available/pracytl.conf
+
+```
+nano /etc/nginx/sites-available/pracytl.conf
+```
+
 <h3>5º PASO</h3>
 SE PONE DENTRO:
+
+```
 server {
     listen       80;
-    server_name  <DOMINIO>;
+    server_name  dominio.com;
 
     location / {
-        proxy_pass http://127.0.0.1:8080;
+        proxy_pass http://IP:Puerto;
     }
 }
+```
+
 <h3>6º PASO</h3>
--> certbot --nginx -d <DOMINIO>
+
+```
+certbot --nginx -d <DOMINIO>
+```
+
 <h3>7º PASO</h3>
--> systemctl restart nginx
+
+```
+systemctl restart nginx
+```
