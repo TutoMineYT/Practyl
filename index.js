@@ -15,7 +15,7 @@ app.use(cookieSession({
     name: 'session',
     keys: ['key1', 'key2']
 }))
-app.listen(80)
+app.listen(8080)
 
 console.log(chalk.red("===================================================================================="))
 console.log(chalk.red("|                ") + chalk.blue(" ____                 _         _ ") + chalk.red("                                 |"))
