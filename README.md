@@ -8,9 +8,11 @@ Practyl es un panel de control para pterodactyl con el que podas crear servidore
 
 <h1>Guia de instalacion.</h1>
 <h3>1º PASO</h3>
+
 ```
 git clone https://github.com/TutoMineYT/Practyl
 ```
+
 <h3>2º PASO</h3>
 
 ```
