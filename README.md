@@ -62,10 +62,10 @@ SE PONE DENTRO:
 ```
 server {
     listen       80;
-    server_name  dominio.com;
+    server_name  <DOMINIO>;
 
     location / {
-        proxy_pass http://IP:Puerto;
+        proxy_pass http://127.0.0.1:8080;
     }
 }
 ```
