@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- (config.general.name ?? "Practyl Panel") %> | Home</title>
+</head>
+
+<body style="background-color: rgb(26, 26, 26);">
+
+    <%- include("../parts/header.ejs") %>
+
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                    style="border-radius: 10px; height: 85vh; margin-left: 15px; width: 30vh;">
+                    <%- include("../parts/sidebar.ejs") %>
+                </div>
+                <div class="col py-3">
+                    <div
+                        style="margin-top: -16px;padding: 5px; border-radius: 10px; background-color: rgb(33,37,41); height: 85vh;">
+                        
+                    </div>
+                </div>
+            </div>
+
+</body>
+
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- (config.general.name ?? "Practyl Panel" ) %> | Configuracion</title>
+</head>
+
+<body style="background-color: rgb(26, 26, 26);">
+
+    <%- include("../../parts/header.ejs") %>
+
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                    style="border-radius: 10px; height: 85vh; margin-left: 15px; width: 30vh;">
+                    <%- include("../../parts/sidebar.ejs") %>
+                </div>
+                <div class="col py-3">
+                    <div
+                        style="margin-top: -16px;padding: 5px; border-radius: 10px; background-color: rgb(33,37,41); height: 85vh; text-align: center;">
+                        <h1>Configuracion <b>Practyl</b>.</h1>
+                        <h2>Apartado: <b>General</b></h2>
+                        <br><br>
+                        <div style="display: flex; width: 100%; height: 65%;">
+                            <div style="width: 100%;">
+                                <div style="margin: 20px">
+                                    <h3><b>Nombre del dash:</b></h3>
+                                    <input id="name"
+                                        style="border: 0px; border-radius: 10px; padding: 5px; width: 100%;" type="text"
+                                        placeholder="Ejemplo: Pracyl Hosting"
+                                        value='<%- config.general.name ?? "Practyl Panel" %>'>
+                                    <div
+                                        style="background-color: rgb(22, 22, 22); height: 2px; margin-top: 20px; margin-bottom: 20px;">
+                                    </div>
+                                </div>
+                                <div style="margin: 20px">
+                                    <h3><b>Dominio del dash:</b></h3>
+                                    <input id="domain"
+                                        style="border: 0px; border-radius: 10px; padding: 5px; width: 100%;" type="text"
+                                        placeholder="Ejemplo: https://practyl.com"
+                                        value="<%= config.general.protocol %><%=config.general.domain %>">
+                                    <div
+                                        style="background-color: rgb(22, 22, 22); height: 2px; margin-top: 20px; margin-bottom: 20px;">
+                                    </div>
+                                </div>
+                                <div style="margin: 20px">
+                                    <h3><b>Discord:</b></h3>
+                                    <input id="discord"
+                                        style="border: 0px; border-radius: 10px; padding: 5px; width: 100%;" type="text"
+                                        placeholder="Ejemplo: https://discord.gg/9jzCG6dKDG"
+                                        value="<%= config.general.discord %>">
+                                </div>
+                            </div>
+                            <div style="background-color: rgb(22, 22, 22); width: 2px; margin: 20px"></div>
+                            <div style="width: 100%;">
+                                <h3 style="margin-bottom: 30px">Paginas habilitadas/deshabilitadas.</h3>
+                                <div style="display:flex; margin-bottom: 20px;">
+                                    <h5>Pagina AFK:</h5>
+                                    <% if(config.general && config.general.afkPage && config.general.afkPage===true) {
+                                        %>
+                                        <label class="switch" style="margin-left: 10px; margin-top: 3px;">
+                                            <input id="afkPage" type="checkbox" checked>
+                                            <div class="slider">
+                                                <div class="circle">
+                                                    <svg class="cross" xml:space="preserve"
+                                                        style="enable-background:new 0 0 512 512"
+                                                        viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <g>
+                                                            <path data-original="#000000" fill="currentColor"
+                                                                d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
+                                                            </path>
+                                                        </g>
+                                                    </svg>
+                                                    <svg class="checkmark" xml:space="preserve"
+                                                        style="enable-background:new 0 0 512 512" viewBox="0 0 24 24"
+                                                        y="0" x="0" height="10" width="10"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <g>
+                                                            <path class="" data-original="#000000" fill="currentColor"
+                                                                d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                                            </path>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        <% } else { %>
+                                            <label class="switch" style="margin-left: 10px; margin-top: 3px;">
+                                                <input id="afkPage" type="checkbox">
+                                                <div class="slider">
+                                                    <div class="circle">
+                                                        <svg class="cross" xml:space="preserve"
+                                                            style="enable-background:new 0 0 512 512"
+                                                            viewBox="0 0 365.696 365.696" y="0" x="0" height="6"
+                                                            width="6" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                            version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                                <path data-original="#000000" fill="currentColor"
+                                                                    d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                        <svg class="checkmark" xml:space="preserve"
+                                                            style="enable-background:new 0 0 512 512"
+                                                            viewBox="0 0 24 24" y="0" x="0" height="10" width="10"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                                <path class="" data-original="#000000"
+                                                                    fill="currentColor"
+                                                                    d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <% } %>
+                                </div>
+                                <div style="display:flex; margin-bottom: 20px;">
+                                    <h5>Tienda:</h5>
+                                    <% if(config.general && config.general.storePage && config.general.storePage===true)
+                                        { %>
+                                        <label class="switch" style="margin-left: 10px; margin-top: 3px;">
+                                            <input id="storePage" type="checkbox" checked>
+                                            <div class="slider">
+                                                <div class="circle">
+                                                    <svg class="cross" xml:space="preserve"
+                                                        style="enable-background:new 0 0 512 512"
+                                                        viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <g>
+                                                            <path data-original="#000000" fill="currentColor"
+                                                                d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
+                                                            </path>
+                                                        </g>
+                                                    </svg>
+                                                    <svg class="checkmark" xml:space="preserve"
+                                                        style="enable-background:new 0 0 512 512" viewBox="0 0 24 24"
+                                                        y="0" x="0" height="10" width="10"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <g>
+                                                            <path class="" data-original="#000000" fill="currentColor"
+                                                                d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                                            </path>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        <% } else { %>
+                                            <label class="switch" style="margin-left: 10px; margin-top: 3px;">
+                                                <input id="storePage" type="checkbox">
+                                                <div class="slider">
+                                                    <div class="circle">
+                                                        <svg class="cross" xml:space="preserve"
+                                                            style="enable-background:new 0 0 512 512"
+                                                            viewBox="0 0 365.696 365.696" y="0" x="0" height="6"
+                                                            width="6" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                            version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                                <path data-original="#000000" fill="currentColor"
+                                                                    d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                        <svg class="checkmark" xml:space="preserve"
+                                                            style="enable-background:new 0 0 512 512"
+                                                            viewBox="0 0 24 24" y="0" x="0" height="10" width="10"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                                <path class="" data-original="#000000"
+                                                                    fill="currentColor"
+                                                                    d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <% } %>
+
+
+                                </div>
+                                <div
+                                    style="background-color: rgb(22, 22, 22); height: 2px; margin-top: 20px; margin-bottom: 20px;">
+                                </div>
+                                <div>
+                                    <h3>Metodos de logeo.</h3>
+                                    <div style="display:flex; margin-bottom: 20px;">
+                                        <h5>Email:</h5>
+                                        <% if(config.general && config.general.emailLogin && config.general.emailLogin===true)
+                                            { %>
+                                            <label class="switch" style="margin-left: 10px; margin-top: 3px;">
+                                                <input id="emailLogin" type="checkbox" checked>
+                                                <div class="slider">
+                                                    <div class="circle">
+                                                        <svg class="cross" xml:space="preserve"
+                                                            style="enable-background:new 0 0 512 512"
+                                                            viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                                <path data-original="#000000" fill="currentColor"
+                                                                    d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                        <svg class="checkmark" xml:space="preserve"
+                                                            style="enable-background:new 0 0 512 512" viewBox="0 0 24 24"
+                                                            y="0" x="0" height="10" width="10"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                                <path class="" data-original="#000000" fill="currentColor"
+                                                                    d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <% } else { %>
+                                                <label class="switch" style="margin-left: 10px; margin-top: 3px;">
+                                                    <input id="emailLogin" type="checkbox">
+                                                    <div class="slider">
+                                                        <div class="circle">
+                                                            <svg class="cross" xml:space="preserve"
+                                                                style="enable-background:new 0 0 512 512"
+                                                                viewBox="0 0 365.696 365.696" y="0" x="0" height="6"
+                                                                width="6" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                                <g>
+                                                                    <path data-original="#000000" fill="currentColor"
+                                                                        d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
+                                                                    </path>
+                                                                </g>
+                                                            </svg>
+                                                            <svg class="checkmark" xml:space="preserve"
+                                                                style="enable-background:new 0 0 512 512"
+                                                                viewBox="0 0 24 24" y="0" x="0" height="10" width="10"
+                                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <g>
+                                                                    <path class="" data-original="#000000"
+                                                                        fill="currentColor"
+                                                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                                                    </path>
+                                                                </g>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                <% } %>
+    
+    
+                                    </div>
+                                    <div style="display:flex; margin-bottom: 20px;">
+                                        <h5>Discord Oauth2:</h5>
+                                        <% if(config.general && config.general.oauth2 && config.general.oauth2===true)
+                                            { %>
+                                            <label class="switch" style="margin-left: 10px; margin-top: 3px;">
+                                                <input id="oauth2" type="checkbox" checked>
+                                                <div class="slider">
+                                                    <div class="circle">
+                                                        <svg class="cross" xml:space="preserve"
+                                                            style="enable-background:new 0 0 512 512"
+                                                            viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                                <path data-original="#000000" fill="currentColor"
+                                                                    d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                        <svg class="checkmark" xml:space="preserve"
+                                                            style="enable-background:new 0 0 512 512" viewBox="0 0 24 24"
+                                                            y="0" x="0" height="10" width="10"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                                <path class="" data-original="#000000" fill="currentColor"
+                                                                    d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <% } else { %>
+                                                <label class="switch" style="margin-left: 10px; margin-top: 3px;">
+                                                    <input id="oauth2" type="checkbox">
+                                                    <div class="slider">
+                                                        <div class="circle">
+                                                            <svg class="cross" xml:space="preserve"
+                                                                style="enable-background:new 0 0 512 512"
+                                                                viewBox="0 0 365.696 365.696" y="0" x="0" height="6"
+                                                                width="6" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                                <g>
+                                                                    <path data-original="#000000" fill="currentColor"
+                                                                        d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
+                                                                    </path>
+                                                                </g>
+                                                            </svg>
+                                                            <svg class="checkmark" xml:space="preserve"
+                                                                style="enable-background:new 0 0 512 512"
+                                                                viewBox="0 0 24 24" y="0" x="0" height="10" width="10"
+                                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <g>
+                                                                    <path class="" data-original="#000000"
+                                                                        fill="currentColor"
+                                                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                                                    </path>
+                                                                </g>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                <% } %>
+    
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            style="height: 10%; width: 80%; border: none; border-radius: 20px; background-color: green;"
+                            id="save">Guardar Configuracion</button>
+                    </div>
+                </div>
+            </div>
+
+</body>
+<script src="/js/admin/general.js"></script>
+
+</html>

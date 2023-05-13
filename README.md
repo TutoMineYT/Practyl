@@ -3,6 +3,8 @@ Practyl es un panel de control para pterodactyl con el que podas crear servidore
 
 <img src= "https://cdn.discordapp.com/attachments/951734936539394088/1101944854432465007/image.png">
 
+<a href="https://discord.gg/9jzCG6dKDG">Discord</a>
+
 <h1>Requerimientos</h1>
 <h2>- NodeJS > 18</h2>
 
@@ -29,6 +31,25 @@ npm i
 
 ```
 node .
+```
+
+<h1>Tener projecto 24/7</h1>
+<h3>1º PASO</h3>
+
+```
+npm i -g pm2
+```
+
+<h3>2º PASO</h3>
+
+```
+cd DIRECTORIO && pm2 start index.js --name Practyl
+```
+
+<h3>3º PASO (Iniciar automaticamente con el sistema) - REQUIERE LINUX</h3>
+
+```
+pm2 startup
 ```
 
 <h1>Guia de instalacion de NGINX (Linux systems)</h1>

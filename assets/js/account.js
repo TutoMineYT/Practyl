@@ -40,7 +40,12 @@ function updateKey() {
             icon: json.icon,
             title: json.message,
             timer: json.timer
-        })      
+        })
+        if(json.link){
+            setTimeout(function() { 
+                window.location.href = json.link
+            }, json.timer)
+        }         
     }).catch((e)=> {
         console.log(e)
         Toast.fire({

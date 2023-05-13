@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- (config.general.name ?? "Practyl Panel") %> | Lista de NESTS</title>
+</head>
+
+<body style="background-color: rgb(26, 26, 26);">
+
+    <%- include("../../parts/header.ejs") %>
+
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                    style="border-radius: 10px; height: 85vh; margin-left: 15px; width: 30vh;">
+                    <%- include("../../parts/sidebar.ejs") %>
+                </div>
+                <div class="col py-3">
+                    <div
+                        style="margin-top: -16px;padding: 5px; border-radius: 10px; background-color: rgb(33,37,41); height: 85vh;">
+                        <center>
+                            <h1>Lista de NESTS</h1>
+                            <h2>Selecciona un NEST para ver los eggs y añadirlos a la dashboard.</h2>
+                        </center>
+                        <% nests.forEach(nest => { %>
+                            <div style="margin: 5px; background-color:rgb(51, 51, 51); padding: 5px; border-radius: 10px; display: flex; width: 164vh;">
+                                <div style="display: flex; width: 158vh;">
+                                    <span style="width: 39.5; margin-left: 1%">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z"></path>
+                                            <path d="M16 7h4"></path>
+                                            <path d="M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3"></path>
+                                         </svg>
+                                        <b>Nombre:</b> <%= nest.attributes.name %>
+                                    </span>
+                                </div>
+                                <div style="display: flex">
+                                    <a href="/admin/config/nest/<%= nest.attributes.id %>"><button style="border-width: 0px; border-radius: 20px; width: 140px; margin-left: 5px;">Ver EGGS</button></a>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+
+</body>
+
+</html>

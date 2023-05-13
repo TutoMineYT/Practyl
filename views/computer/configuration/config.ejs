@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- (config.general.name ?? "Practyl Panel" ) %> | Home</title>
+</head>
+
+<body style="background-color: rgb(26, 26, 26);">
+
+    <%- include("../parts/header.ejs") %>
+
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                    style="border-radius: 10px; height: 85vh; margin-left: 15px; width: 30vh;">
+                    <%- include("../parts/sidebar.ejs") %>
+                </div>
+                <div class="col py-3">
+                    <div
+                        style="margin-top: -16px;padding: 5px; border-radius: 10px; background-color: rgb(33,37,41); height: 85vh; text-align: center;">
+                        <h1>Instalacion <b>Practyl</b>.</h1>
+                        <h2>La dashboard esta deshabilitada hasta rellenar esta configuracion.</h2>
+                        <br>
+                        <div style="margin-left: 30px; margin-right: 30px; display: flex; height: 60vh;">
+                            <div style="flex: 1; display: flex; flex-direction: column;">
+                                <h2 style="margin-bottom: 50px;">Dashboard</h2>
+                                <h3><b>Dominio del dash:</b></h3>
+                                <input id="domain" style="border: 0px; border-radius: 10px; padding: 5px; width: 100%;"
+                                    type="text" placeholder="Ejemplo: https://practyl.com">
+                                <div
+                                    style="background-color: rgb(22, 22, 22); height: 2px; margin-top: 20px; margin-bottom: 20px;">
+                                </div>
+                                <h3><b>Limites por usuario:</b></h3>
+                                <div style="display:flex; gap: 20px; text-align: center;">
+                                    <h4>RAM (MB):</h4>
+                                    <h4>CPU (%): </h4>
+                                    <h4>DISCO (MB):</h4>
+                                    <h4>SERVIDORES: </h4>
+                                </div>
+                                <div style="display:flex; gap: 20px; text-align: center;">
+                                    <input id="maxRAM"
+                                        style="border: 0px; border-radius: 10px; padding: 5px; width: 120px;"
+                                        type="number" value="256">
+                                    <input id="maxCPU"
+                                        style="border: 0px; border-radius: 10px; padding: 5px; width: 95px;"
+                                        type="number" value="70">
+                                    <input id="maxDISK"
+                                        style="border: 0px; border-radius: 10px; padding: 5px; width: 130px;"
+                                        type="number" value="512">
+                                    <input id="maxSERVER"
+                                        style="border: 0px; border-radius: 10px; padding: 5px; width: 150px;"
+                                        type="number" value="1">
+                                </div>
+                            </div>
+                            <div style="background-color: rgb(22, 22, 22); width: 2px; margin: 40px"></div>
+                            <div style="flex: 1; display: flex; flex-direction: column;">
+                                <h2 style="margin-bottom: 50px;">Pterodactyl</h2>
+                                <div>
+                                    <h3>Dominio del panel</h3>
+                                    <input id="pDomain"
+                                        style="border: 0px; border-radius: 10px; padding: 5px; width: 100%;" type="text"
+                                        placeholder="Ejemplo: https://panel.practyl.com">
+                                </div>
+                                <div
+                                    style="background-color: rgb(22, 22, 22); height: 2px; margin-top: 20px; margin-bottom: 20px;">
+                                </div>
+                                <div>
+                                    <h3>ApiKey</h3>
+                                    <input id="pKey"
+                                        style="border: 0px; border-radius: 10px; padding: 5px; width: 100%;" type="text"
+                                        placeholder="Ejemplo: ptla_CLzHMz0033MCqfbirO11lhSzqBTyMuIC9Ce18E53LFn">
+                                </div>
+                            </div>
+                        </div>
+                        <button id="save"
+                            style="width: 98%; border: 0; border-radius: 20px; background-color: green; padding: 5px">
+                            Instalar panel.
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+</body>
+<script src="/js/configure.js"></script>
+
+</html>

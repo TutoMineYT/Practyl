@@ -1,0 +1,264 @@
+<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white">
+    <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <span class="fs-5 d-none d-sm-inline">Dashboard</span>
+    </a>
+    <% if(req.session.user) { %>
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu"
+            style="margin-left: 30px;">
+            <li>
+                <a href="#submenu1" data-bs-toggle="collapse">
+                    <div style="display: flex">
+                        <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M3 4m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z">
+                            </path>
+                            <path d="M3 12m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z">
+                            </path>
+                            <path d="M7 8l0 .01"></path>
+                            <path d="M7 16l0 .01"></path>
+                        </svg>
+                        <span class="ms-1 d-none d-sm-inline">Servidores</span>
+                    </div>
+                </a>
+                <ul class="collapse nav flex-column ms-1" id="submenu1">
+                    <li class="w-100">
+                        <a href="/server/list" class="nav-link px-0">
+                            <div style="display: flex; margin-left: 20px;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M13 5h8"></path>
+                                    <path d="M13 9h5"></path>
+                                    <path d="M13 15h8"></path>
+                                    <path d="M13 19h5"></path>
+                                    <path
+                                        d="M3 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z">
+                                    </path>
+                                    <path
+                                        d="M3 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z">
+                                    </path>
+                                </svg>
+                                <span class="d-none d-sm-inline"> Lista</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="w-100">
+                        <a href="/server/create" class="nav-link px-0">
+                            <div style="display: flex; margin-left: 20px;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M9 12h6"></path>
+                                    <path d="M12 9v6"></path>
+                                    <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path>
+                                </svg>
+                                <span class="d-none d-sm-inline"> Crear</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <% if(config.general && config.general.storePage && config.general.storePage === true) { %>
+                <li>
+                    <a href="/store">
+                        <div style="display: flex">
+                            <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M3 21l18 0"></path>
+                                <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4">
+                                </path>
+                                <path d="M5 21l0 -10.15"></path>
+                                <path d="M19 21l0 -10.15"></path>
+                                <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"></path>
+                            </svg>
+                            <span class="ms-1 d-none d-sm-inline">Tienda</span>
+                        </div>
+                    </a>
+                </li>
+            <% } %>
+            <li>
+                <a href="/giftcard">
+                    <div style="display: flex">
+                        <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M3 5m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z">
+                            </path>
+                            <path d="M7 16l3 -3l3 3"></path>
+                            <path
+                                d="M8 13c-.789 0 -2 -.672 -2 -1.5s.711 -1.5 1.5 -1.5c1.128 -.02 2.077 1.17 2.5 3c.423 -1.83 1.372 -3.02 2.5 -3c.789 0 1.5 .672 1.5 1.5s-1.211 1.5 -2 1.5h-4z">
+                            </path>
+                        </svg>
+                        <span class="ms-1 d-none d-sm-inline">Tarjeta de regalo</span>
+                    </div>
+                </a>
+            </li>
+            <% if(config.general && config.general.afkPage && config.general.afkPage === true) { %>
+                <li>
+                    <a href="/afk">
+                        <div style="display: flex">
+                            <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z">
+                                </path>
+                            </svg>
+                            <span class="ms-1 d-none d-sm-inline">Zona AFK</span>
+                        </div>
+                    </a>
+                </li>
+            <% } %>
+            <li>
+                <a href="/support">
+                    <div style="display: flex">
+                        <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4"></path>
+                            <path d="M9.5 9h.01"></path>
+                            <path d="M14.5 9h.01"></path>
+                            <path d="M9.5 13a3.5 3.5 0 0 0 5 0"></path>
+                        </svg>
+                        <span class="ms-1 d-none d-sm-inline">Soporte</span>
+                    </div>
+                </a>
+            </li>
+            <% if(req.session.user.admin &&req.session.user.admin===true) { %>
+                <li>
+                    <a href="#submenu2" data-bs-toggle="collapse">
+                        <div style="display: flex">
+                            <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M21 12a9 9 0 1 0 -8.983 9"></path>
+                                <path d="M18.001 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                <path d="M18.001 14.5v1.5"></path>
+                                <path d="M18.001 20v1.5"></path>
+                                <path d="M21.032 16.25l-1.299 .75"></path>
+                                <path d="M16.27 19l-1.3 .75"></path>
+                                <path d="M14.97 16.25l1.3 .75"></path>
+                                <path d="M19.733 19l1.3 .75"></path>
+                                <path d="M9 10h.01"></path>
+                                <path d="M15 10h.01"></path>
+                                <path d="M9.5 15c.658 .64 1.56 1 2.5 1"></path>
+                            </svg>
+                            <span class="ms-1 d-none d-sm-inline">Admin panel</span>
+                        </div>
+                    </a>
+                    <ul class="collapse nav flex-column ms-1" id="submenu2">
+                        <li class="w-100">
+                            <a href="/admin/user/list" class="nav-link px-0">
+                                <div style="display: flex; margin-left: 20px;">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                        <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                        <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
+                                    </svg>
+                                    <span class="d-none d-sm-inline"> Usuarios</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="w-100">
+                            <a href="/admin/giftcard/list" class="nav-link px-0">
+                                <div style="display: flex; margin-left: 20px;">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path
+                                            d="M3 5m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z">
+                                        </path>
+                                        <path d="M7 16l3 -3l3 3"></path>
+                                        <path
+                                            d="M8 13c-.789 0 -2 -.672 -2 -1.5s.711 -1.5 1.5 -1.5c1.128 -.02 2.077 1.17 2.5 3c.423 -1.83 1.372 -3.02 2.5 -3c.789 0 1.5 .672 1.5 1.5s-1.211 1.5 -2 1.5h-4z">
+                                        </path>
+                                    </svg>
+                                    <span class="d-none d-sm-inline"> Tarjetas de regalo</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="w-100">
+                            <a href="/admin/config/list" class="nav-link px-0">
+                                <div style="display: flex; margin-left: 20px;">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                        <path d="M12 10.5v1.5"></path>
+                                        <path d="M12 16v1.5"></path>
+                                        <path d="M15.031 12.25l-1.299 .75"></path>
+                                        <path d="M10.268 15l-1.3 .75"></path>
+                                        <path d="M15 15.803l-1.285 -.773"></path>
+                                        <path d="M10.285 12.97l-1.285 -.773"></path>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                     </svg>
+                                    <span class="d-none d-sm-inline"> Configuracion</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <% } %>
+        </ul>
+        <% } else { %>
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu"
+                style="margin-left: 30px;">
+                <li>
+                    <a href="/login">
+                        <div style="display: flex">
+                            <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M16.555 3.843l3.602 3.602a2.877 2.877 0 0 1 0 4.069l-2.643 2.643a2.877 2.877 0 0 1 -4.069 0l-.301 -.301l-6.558 6.558a2 2 0 0 1 -1.239 .578l-.175 .008h-1.172a1 1 0 0 1 -.993 -.883l-.007 -.117v-1.172a2 2 0 0 1 .467 -1.284l.119 -.13l.414 -.414h2v-2h2v-2l2.144 -2.144l-.301 -.301a2.877 2.877 0 0 1 0 -4.069l2.643 -2.643a2.877 2.877 0 0 1 4.069 0z">
+                                </path>
+                                <path d="M15 9h.01"></path>
+                            </svg>
+                            <span class="ms-1 d-none d-sm-inline">Iniciar Sesion</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/register">
+                        <div style="display: flex">
+                            <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M16.555 3.843l3.602 3.602a2.877 2.877 0 0 1 0 4.069l-2.643 2.643a2.877 2.877 0 0 1 -4.069 0l-.301 -.301l-6.558 6.558a2 2 0 0 1 -1.239 .578l-.175 .008h-1.172a1 1 0 0 1 -.993 -.883l-.007 -.117v-1.172a2 2 0 0 1 .467 -1.284l.119 -.13l.414 -.414h2v-2h2v-2l2.144 -2.144l-.301 -.301a2.877 2.877 0 0 1 0 -4.069l2.643 -2.643a2.877 2.877 0 0 1 4.069 0z">
+                                </path>
+                                <path d="M15 9h.01"></path>
+                            </svg>
+                            <span class="ms-1 d-none d-sm-inline">Registrarse</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/support">
+                        <div style="display: flex">
+                            <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4"></path>
+                                <path d="M9.5 9h.01"></path>
+                                <path d="M14.5 9h.01"></path>
+                                <path d="M9.5 13a3.5 3.5 0 0 0 5 0"></path>
+                            </svg>
+                            <span class="ms-1 d-none d-sm-inline">Soporte</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <% } %>
+                <hr>
+                <div style="text-align: center;">
+                    <h5><a href="https://github.com/TutoMineYT/Practyl">Practyl</a> · &copy <%- new Date().getFullYear() %></h5>
+                    <h6>Made by <a href="https://github.com/TutoMineYT">TutoMine</a></h6>
+                </div>
+</div>

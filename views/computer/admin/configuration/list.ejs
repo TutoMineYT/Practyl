@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- (config.general.name ?? "Practyl Panel" ) %> | Configuracion</title>
+</head>
+
+<body style="background-color: rgb(26, 26, 26);">
+
+    <%- include("../../parts/header.ejs") %>
+
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                    style="border-radius: 10px; height: 85vh; margin-left: 15px; width: 30vh;">
+                    <%- include("../../parts/sidebar.ejs") %>
+                </div>
+                <div class="col py-3">
+                    <div
+                        style="margin-top: -16px;padding: 5px; border-radius: 10px; background-color: rgb(33,37,41); height: 85vh; text-align: center;">
+                        <h1>Configuracion <b>Practyl</b>.</h1>
+                        <br><br>
+                        <div style="display: flex; width: 100%; height: 83%;">
+                            <div style="width: 100%;">
+                                <a href="/admin/config/general"><button style="width: 86%; height: 40px; border-radius: 20px; border: 0; margin: 20px">General</button></a>
+                                <a href="/admin/config/usuarios"><button style="width: 86%; height: 40px; border-radius: 20px; border: 0; margin: 20px">Usuarios</button></a>
+                                <a href="/admin/config/tienda"><button style="width: 86%; height: 40px; border-radius: 20px; border: 0; margin: 20px">Tienda</button></a>
+                            </div>
+                            <div style="background-color: rgb(22, 22, 22); width: 2px; margin: 20px"></div>
+                            <div style="width: 100%;">
+                                <a href="/admin/config/pterodactyl"><button style="width: 86%; height: 40px; border-radius: 20px; border: 0; margin: 20px">Pterodactyl</button></a>
+                                <a href="/admin/config/nests"><button style="width: 86%; height: 40px; border-radius: 20px; border: 0; margin: 20px">Eggs</button></a>
+                                <a href="/admin/config/oauth2"><button style="width: 86%; height: 40px; border-radius: 20px; border: 0; margin: 20px">Discord Oauth2</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</body>
+<script src="/js/configure.js"></script>
+
+</html>

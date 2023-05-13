@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- (config.general.name ?? "Practyl Panel") %> | Tienda</title>
+</head>
+
+<body style="background-color: rgb(26, 26, 26);">
+
+    <%- include("../parts/header.ejs") %>
+
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                    style="border-radius: 10px; height: 85vh; margin-left: 15px; width: 30vh;">
+                    <%- include("../parts/sidebar.ejs") %>
+                </div>
+                <div class="col py-3">
+                    <div
+                        style="margin-top: -16px;padding: 5px; border-radius: 10px; background-color: rgb(33,37,41); height: 85vh;">
+                        <center>
+                            <h1>Tienda</h1>
+                            <div style="display: flex; justify-content: center;">
+                                <h5><b>Coins:</b>
+                                    <%= req.session.user.coins %> <svg width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z"></path>
+                                        <path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4"></path>
+                                        <path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"></path>
+                                        <path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
+                                        <path d="M3 11c0 .888 .772 1.45 2 2"></path>
+                                     </svg>
+                                </h5>
+                            </div>
+                        </center>
+                        <div style=" display: flex; align-items: center; justify-content: center; padding-top: 5%;">
+                            <div
+                                style="width: 250px; height: 440px; background-color: rgb(65, 69, 69); border-radius: 15px;">
+                                <div style="display: flex; justify-content: center; margin-top: 50px;">
+                                    <h2>SERVIDOR</h2>
+                                </div>
+                                <div style="display: flex; justify-content: center;">
+                                    1 SERVIDOR x <%= config.tienda.server %> coins.
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 40%;">
+                                    <span>Price: <span id="price-server">
+                                            <%= config.tienda.server %>
+                                        </span> coins.</span>
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="count-server" type="number" value="1" required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;">
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 7%;">
+                                    <button id="buy-server"
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px; background-color: blue;">Comprar</button>
+                                </div>
+                            </div>
+                            <div
+                                style="width: 250px; height: 440px; background-color: rgb(65, 69, 69); border-radius: 15px; margin-left: 40px;">
+                                <div style="display: flex; justify-content: center; margin-top: 50px;">
+                                    <h2>CPU</h2>
+                                </div>
+                                <div style="display: flex; justify-content: center;">
+                                    1% CPU x <%= config.tienda.cpu %> coins.
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 40%;">
+                                    <span>Price: <span id="price-cpu">
+                                            <%= config.tienda.cpu %>
+                                        </span> coins.</span>
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="count-cpu" type="number" value="1" required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;">
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 7%;">
+                                    <button id="buy-cpu"
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px; background-color: blue;">Comprar</button>
+                                </div>
+                            </div>
+                            <div
+                                style="width: 250px; height: 440px; background-color: rgb(65, 69, 69); border-radius: 15px; margin-left: 40px;">
+                                <div style="display: flex; justify-content: center; margin-top: 50px;">
+                                    <h2>RAM</h2>
+                                </div>
+                                <div style="display: flex; justify-content: center;">
+                                    1MB RAM x <%= config.tienda.ram %> coins.
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 40%;">
+                                    <span>Price: <span id="price-ram">
+                                            <%= config.tienda.ram %>
+                                        </span> coins.</span>
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="count-ram" type="number" value="1" required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;">
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 7%;">
+                                    <button id="buy-ram"
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px; background-color: blue;">Comprar</button>
+                                </div>
+                            </div>
+                            <div
+                                style="width: 250px; height: 440px; background-color: rgb(65, 69, 69); border-radius: 15px; margin-left: 40px;">
+                                <div style="display: flex; justify-content: center; margin-top: 50px;">
+                                    <h2>DISCO</h2>
+                                </div>
+                                <div style="display: flex; justify-content: center;">
+                                    1 DISCO x <%= config.tienda.disk %> coins.
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 40%;">
+                                    <span>Price: <span id="price-disk">
+                                            <%= config.tienda.disk %>
+                                        </span> coins.</span>
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="count-disk" type="number" value="1" required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;">
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 7%;">
+                                    <button id="buy-disk"
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px; background-color: blue;">Comprar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</body>
+
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    let serverPrice = document.getElementById("price-server")
+    let serverInput = document.getElementById("count-server")
+    let serverBuy = document.getElementById("buy-server")
+
+    serverInput.addEventListener("change", () => {
+        let newCount = document.getElementById("count-server").value
+        let newPrice = parseFloat("<%= config.tienda.server %>") * parseInt(newCount)
+        serverPrice.innerHTML = newPrice
+    })
+
+    let cpuPrice = document.getElementById("price-cpu")
+    let cpuInput = document.getElementById("count-cpu")
+    let cpuBuy = document.getElementById("buy-cpu")
+
+    cpuInput.addEventListener("change", () => {
+        let newCount = document.getElementById("count-cpu").value
+        let newPrice = parseFloat("<%= config.tienda.cpu %>") * parseInt(newCount)
+        cpuPrice.innerHTML = newPrice
+    })
+
+    let ramPrice = document.getElementById("price-ram")
+    let ramInput = document.getElementById("count-ram")
+    let ramBuy = document.getElementById("buy-ram")
+
+    ramInput.addEventListener("change", () => {
+        let newCount = document.getElementById("count-ram").value
+        let newPrice = parseFloat("<%= config.tienda.ram %>") * parseInt(newCount)
+        ramPrice.innerHTML = newPrice
+    })
+
+    let diskPrice = document.getElementById("price-disk")
+    let diskInput = document.getElementById("count-disk")
+    let diskBuy = document.getElementById("buy-disk")
+
+    diskInput.addEventListener("change", () => {
+        let newCount = document.getElementById("count-disk").value
+        let newPrice = parseFloat("<%= config.tienda.disk %>") * parseInt(newCount)
+        diskPrice.innerHTML = newPrice
+    })
+
+    function buy(type, count) {
+        fetch("/api/panel", {
+            method: "POST",
+            headers: {
+                'accept': 'application/json',
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                "action": "buy-resources",
+                "data": {
+                    type,
+                    count
+                }
+            })
+        }).then(respone => respone.json())
+        .then(json => {
+            Toast.fire({
+                icon: json.icon,
+                title: json.message,
+                timer: json.timer
+            })
+            if(json.link){
+                setTimeout(function() { 
+                    window.location.href = json.link
+                }, json.timer)
+            }          
+        }).catch((e)=> {
+            console.log(e)
+            Toast.fire({
+                icon: 'error',
+                title: 'No se puede conectar con el servidor.',
+                timer: 2500
+            })
+        })
+    }
+
+    serverBuy.addEventListener("click", () => {
+        let type = "server"
+        let count = document.getElementById("count-server").value
+        buy(type, count)
+    })
+    cpuBuy.addEventListener("click", () => {
+        let type = "cpu"
+        let count = document.getElementById("count-cpu").value
+        buy(type, count)
+    })
+    ramBuy.addEventListener("click", () => {
+        let type = "ram"
+        let count = document.getElementById("count-ram").value
+        buy(type, count)
+    })
+    diskBuy.addEventListener("click", () => {
+        let type = "disk"
+        let count = document.getElementById("count-disk").value
+        buy(type, count)
+    })
+
+</script>
+
+</html>

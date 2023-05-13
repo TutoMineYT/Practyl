@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- (config.general.name ?? "Practyl Panel" ) %> | Configuracion</title>
+</head>
+
+<body style="background-color: rgb(26, 26, 26);">
+
+    <%- include("../../parts/header.ejs") %>
+
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                    style="border-radius: 10px; height: 85vh; margin-left: 15px; width: 30vh;">
+                    <%- include("../../parts/sidebar.ejs") %>
+                </div>
+                <div class="col py-3">
+                    <div
+                        style="margin-top: -16px;padding: 5px; border-radius: 10px; background-color: rgb(33,37,41); height: 85vh; text-align: center;">
+                        <h1>Configuracion <b>Practyl</b>.</h1>
+                        <h2>Añadir egg</h2>
+                        <br><br>
+                        <div style="display: flex; width: 100%; height: 65%;">
+                            <div style="width: 100%;">
+                                <h3><b>Minimos recursos:</b></h3>
+                                <div style="display:flex; align-items: center; justify-content: center; text-align: center; margin-top: 40px;">
+                                    <div>
+                                        <div style="display:flex; gap: 20px; text-align: center;">
+                                            <h4>RAM (MB):</h4>
+                                            <h4>CPU (%): </h4>
+                                            <h4>DISCO (MB):</h4>
+                                        </div>
+                                        <div style="display:flex; gap: 20px; text-align: center;">
+                                            <input id="minRAM"
+                                                style="border: 0px; border-radius: 10px; padding: 5px; width: 120px;"
+                                                type="number" value="256">
+                                            <input id="minCPU"
+                                                style="border: 0px; border-radius: 10px; padding: 5px; width: 95px;"
+                                                type="number" value="70">
+                                            <input id="minDISK"
+                                                style="border: 0px; border-radius: 10px; padding: 5px; width: 130px;"
+                                                type="number" value="512">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="background-color: rgb(22, 22, 22); height: 2px; margin: 20px 5% 20px 5%"></div>
+                                <h3><b>Maximos recursos:</b></h3>
+                                <div style="display:flex; align-items: center; justify-content: center; text-align: center; margin-top: 40px;">
+                                    <div>
+                                        <div style="display:flex; gap: 20px; text-align: center;">
+                                            <h4>RAM (MB):</h4>
+                                            <h4>CPU (%): </h4>
+                                            <h4>DISCO (MB):</h4>
+                                        </div>
+                                        <div style="display:flex; gap: 20px; text-align: center;">
+                                            <input id="maxRAM"
+                                                style="border: 0px; border-radius: 10px; padding: 5px; width: 120px;"
+                                                type="number" value="5096">
+                                            <input id="maxCPU"
+                                                style="border: 0px; border-radius: 10px; padding: 5px; width: 95px;"
+                                                type="number" value="500">
+                                            <input id="maxDISK"
+                                                style="border: 0px; border-radius: 10px; padding: 5px; width: 130px;"
+                                                type="number" value="8192">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            style="height: 10%; width: 80%; border: none; border-radius: 20px; background-color: green;"
+                            id="add">Añadir EGG</button>
+                    </div>
+                </div>
+            </div>
+
+</body>
+<script>
+    const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
+
+const button = document.getElementById("add")
+button.addEventListener('click', () => {
+    addEGG()
+})
+
+function addEGG() {
+    let BaseJSON = {
+        "action": "addegg",
+        data: {
+            egg: {
+                nestID: "<%= nestID %>",
+                eggID: "<%= eggID %>"
+            },
+            limits: {
+                max: {
+                    ram: document.getElementById("maxRAM").value,
+                    cpu: document.getElementById("maxCPU").value,
+                    disk: document.getElementById("maxDISK").value
+                },
+                min: {
+                    ram: document.getElementById("minRAM").value,
+                    cpu: document.getElementById("minCPU").value,
+                    disk: document.getElementById("minDISK").value
+                }
+            }
+        }
+    }
+    fetch("/api/configuration", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(BaseJSON)
+    }).then(response => response.json())
+        .then(json => {
+            Toast.fire({
+                icon: json.icon,
+                title: json.message,
+                timer: json.timer
+            })
+            if(json.link){
+                setTimeout(function() { 
+                    window.location.href = json.link
+                }, json.timer)
+            }   
+        }).catch((e) => {
+            console.log(e)
+            Toast.fire({
+                icon: 'error',
+                title: 'No se puede conectar con el servidor.',
+                timer: 2500
+            })
+        })
+}
+</script>
+
+</html>

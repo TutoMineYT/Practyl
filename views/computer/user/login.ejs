@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- (config.general.name ?? "Practyl Panel") %> | Login</title>
+</head>
+
+<body style="background-color: rgb(26, 26, 26);">
+
+    <%- include("../parts/header.ejs") %>
+
+
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                    style="border-radius: 10px; height: 85vh; margin-left: 15px; width: 30vh;">
+                    <%- include("../parts/sidebar.ejs") %>
+                </div>
+            <div class="col py-3">
+                <div style="margin-top: -16px;padding: 5px; border-radius: 10px; background-color: rgb(33,37,41); height: 85vh;">
+                    <div style="display:flex; justify-content: center; align-items: center; padding-top: 10%;">
+                        <div style="width: 340px; height: 440px; background-color: rgb(65, 69, 69); border-radius: 15px;">
+                            <center>
+                                <h2 style="margin-top: 30px;">Iniciar Sesion</h2>
+                            </center>
+                            <div id="formLogin">
+                                <% if(config.general && config.general.emailLogin && config.general.emailLogin === true) { %>
+                                    <form style="padding: 20px; padding-bottom: 5px;">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
+                                            <input type="email" class="form-control" id="emailLogin" autocomplete="email">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                                            <input type="password" class="form-control" id="passwordLogin"
+                                                autocomplete="current-password">
+                                        </div>
+                                        <div style="padding-top: 25px;">
+                                            <button id="btnLogin" onclick="login()" class="btn btn-primary"
+                                                style="width: 100%;">Iniciar Sesion</button>
+                                            <center><h8>¿No tienes una cuenta? <a href="/register">¡Registrate ahora!</a></h8></center>
+                                        </div>
+                                        
+                                    </form>
+                                <% } %>
+                                <% if(config.general && config.general.oauth2 && config.general.oauth2 === true) { %>
+                                    <a href="/api/discord">
+                                        <button class="btn btn-primary" style="margin: 20px;margin-top: 0px; width: 88%; display:flex; align-items: center; justify-content: center;">
+                                            <svg width="40" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
+                                                <path d="M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
+                                                <path d="M8.5 17c0 1 -1.356 3 -1.832 3c-1.429 0 -2.698 -1.667 -3.333 -3c-.635 -1.667 -.476 -5.833 1.428 -11.5c1.388 -1.015 2.782 -1.34 4.237 -1.5l.975 1.923a11.913 11.913 0 0 1 4.053 0l.972 -1.923c1.5 .16 3.043 .485 4.5 1.5c2 5.667 2.167 9.833 1.5 11.5c-.667 1.333 -2 3 -3.5 3c-.5 0 -2 -2 -2 -3"></path>
+                                                <path d="M7 16.5c3.5 1 6.5 1 10 0"></path>
+                                             </svg>
+                                            Iniciar Sesion con Discord
+                                        </button>
+                                    </a>
+                                <% } %>
+                                <% if(config.general && config.general.oauth2 && config.general.emailLogin && config.general.oauth2 !== true && config.general.emailLogin !== true) { %>
+                                    <h5 style="margin: 20px; text-align: center;"><b>El hosting no tiene ningun metodo de acceso/registro.</b></h3>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="/js/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- (config.general.name ?? "Practyl Panel") %> | Configuracion</title>
+</head>
+
+<body style="background-color: rgb(26, 26, 26);">
+
+    <%- include("../../parts/header.ejs") %>
+
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                    style="border-radius: 10px; height: 85vh; margin-left: 15px; width: 30vh;">
+                    <%- include("../../parts/sidebar.ejs") %>
+                </div>
+                <div class="col py-3">
+                    <div
+                        style="margin-top: -16px;padding: 5px; border-radius: 10px; background-color: rgb(33,37,41); height: 85vh;">
+                        <center>
+                            <h1>Configuracion <b>Practyl</b>.</h1>
+                        <h2>Apartado: <b>Tienda</b></h2>
+                        <br><br>
+                        </center>
+                        <div style=" display: flex; align-items: center; justify-content: center; padding-top: 2%; height: 65%;">
+                            <% if (config.tienda) { %>
+                                <div
+                                style="width: 250px; height: 250px; background-color: rgb(65, 69, 69); border-radius: 15px;">
+                                <div style="display: flex; justify-content: center; margin-top: 50px;">
+                                    <h2>1 SERVIDOR.</h2>
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="count-server" type="number"  required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;" value="<%=config.tienda.server %>">
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="max-server" type="number"  required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;" value="<%=config.tienda["buy-limit"]["server"] %>">
+                                </div>
+                            </div>
+                            <div
+                                style="width: 250px; height: 250px; background-color: rgb(65, 69, 69); border-radius: 15px; margin-left: 40px;">
+                                <div style="display: flex; justify-content: center; margin-top: 50px;">
+                                    <h2>1% CPU</h2>
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="count-cpu" type="number"  required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;" value="<%=config.tienda.cpu %>">
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="max-cpu" type="number"  required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;" value="<%=config.tienda["buy-limit"]["cpu"] %>">
+                                </div>
+                            </div>
+                            <div
+                                style="width: 250px; height: 250px; background-color: rgb(65, 69, 69); border-radius: 15px; margin-left: 40px;">
+                                <div style="display: flex; justify-content: center; margin-top: 50px;">
+                                    <h2>1MB RAM</h2>
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="count-ram" type="number"  required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;" value="<%=config.tienda.ram %>">
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="max-ram" type="number"  required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;" value="<%=config.tienda["buy-limit"]["ram"] %>">
+                                </div>
+                            </div>
+                            <div
+                                style="width: 250px; height: 250px; background-color: rgb(65, 69, 69); border-radius: 15px; margin-left: 40px;">
+                                <div style="display: flex; justify-content: center; margin-top: 50px;">
+                                    <h2>1MB DISCO</h2>
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="count-disk" type="number"  required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;" value="<%=config.tienda.disk %>">
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="max-disk" type="number"  required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;" value="<%=config.tienda["buy-limit"]["disk"] %>">
+                                </div>
+                            </div>
+                            <% } else { %>
+                                <div
+                                style="width: 250px; height: 250px; background-color: rgb(65, 69, 69); border-radius: 15px;">
+                                <div style="display: flex; justify-content: center; margin-top: 50px;">
+                                    <h2>1 SERVIDOR.</h2>
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="count-server" type="number" placeholder="Precio en COINS" required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;">
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="max-server" type="number" placeholder="Compra maxima." required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;">
+                                </div>
+                            </div>
+                            <div
+                                style="width: 250px; height: 250px; background-color: rgb(65, 69, 69); border-radius: 15px; margin-left: 40px;">
+                                <div style="display: flex; justify-content: center; margin-top: 50px;">
+                                    <h2>1% CPU</h2>
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="count-cpu" type="number" placeholder="Precio en COINS" required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;">
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="max-cpu" type="number" placeholder="Compra maxima." required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;">
+                                </div>
+                            </div>
+                            <div
+                                style="width: 250px; height: 250px; background-color: rgb(65, 69, 69); border-radius: 15px; margin-left: 40px;">
+                                <div style="display: flex; justify-content: center; margin-top: 50px;">
+                                    <h2>1MB RAM</h2>
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="count-ram" type="number" placeholder="Precio en COINS" required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;">
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="max-ram" type="number" placeholder="Compra maxima." required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;">
+                                </div>
+                            </div>
+                            <div
+                                style="width: 250px; height: 250px; background-color: rgb(65, 69, 69); border-radius: 15px; margin-left: 40px;">
+                                <div style="display: flex; justify-content: center; margin-top: 50px;">
+                                    <h2>1MB DISCO</h2>
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="count-disk" type="number" placeholder="Precio en COINS" required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;">
+                                </div>
+                                <div style="display: flex; justify-content: center; margin-top: 10%;">
+                                    <input id="max-disk" type="number" placeholder="Compra maxima." required
+                                        style="width: 90%; height: 40px; border: 0; border-radius: 10px;">
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
+                        <div style="text-align: center; width: 100%;">
+                            <button
+                            style="height: 10%; width: 80%; border: none; border-radius: 20px; background-color: green;"
+                            id="save">Guardar Configuracion</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</body>
+
+<script src="/js/admin/tienda.js"></script>
+
+</html>
